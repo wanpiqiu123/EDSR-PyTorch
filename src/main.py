@@ -1,5 +1,6 @@
 import torch
 
+import os
 import utility
 import data
 import model
@@ -9,6 +10,8 @@ from trainer import Trainer
 
 torch.manual_seed(args.seed)
 checkpoint = utility.checkpoint(args)
+
+os.environ["CUDA_VISIBLE_DEVICES"] = '1,2'
 
 def main():
     global model

@@ -89,7 +89,7 @@ class Trainer():
                 for lr, hr, filename in tqdm(d, ncols=80):
                     lr, hr = self.prepare(lr, hr)
                     sr = self.model(lr, idx_scale)
-                    sr = utility.quantize(sr, self.args.rgb_range)
+                    # sr = utility.quantize(sr, self.args.rgb_range)
 
                     save_list = [sr]
                     self.ckp.log[-1, idx_data, idx_scale] += utility.calc_psnr(

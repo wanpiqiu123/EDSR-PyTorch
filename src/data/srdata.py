@@ -144,8 +144,15 @@ class SRData(data.Dataset):
             )
             if not self.args.no_augment: lr, hr = common.augment(lr, hr)
         else:
-            ih, iw = lr.shape[:2]
-            hr = hr[0:ih * scale, 0:iw * scale]
+            lr, hr = common.get_patch(
+                lr, hr,
+                patch_size=self.args.patch_size,
+                scale=scale,
+                multi=(len(self.scale) > 1),
+                input_large=self.input_large
+            )
+            # ih, iw = lr.shape[:2]
+            # hr = hr[0:ih * scale, 0:iw * scale]
 
         return lr, hr
 

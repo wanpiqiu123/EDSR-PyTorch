@@ -165,7 +165,8 @@ def quantize(img, rgb_range):
 def calc_psnr(sr, hr, scale, rgb_range, dataset=None):
     if hr.nelement() == 1: return 0
 
-    diff = (sr - hr) / rgb_range
+    # diff = (sr - hr) / rgb_range
+    diff = (sr - hr)
     if dataset and dataset.dataset.benchmark:
         shave = scale
         if diff.size(1) > 1:

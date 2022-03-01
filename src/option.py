@@ -19,7 +19,7 @@ parser.add_argument('--seed', type=int, default=1,
                     help='random seed')
 
 # Data specifications
-parser.add_argument('--dir_data', type=str, default='../../../dataset',
+parser.add_argument('--dir_data', type=str, default='../../dataset',
                     help='dataset directory')
 parser.add_argument('--dir_demo', type=str, default='../test',
                     help='demo image directory')
@@ -67,7 +67,9 @@ parser.add_argument('--dilation', action='store_true',
 parser.add_argument('--precision', type=str, default='single',
                     choices=('single', 'half'),
                     help='FP precision for test (single | half)')
-
+parser.add_argument('--sgc_portion', type=float, default=0.2,
+                    help='SGC edge portion')
+                    
 # Option for Residual dense network (RDN)
 parser.add_argument('--G0', type=int, default=64,
                     help='default number of filters. (Use in RDN)')
@@ -136,7 +138,7 @@ parser.add_argument('--resume', type=int, default=0,
                     help='resume from specific checkpoint')
 parser.add_argument('--save_models', action='store_true',
                     help='save all intermediate models')
-parser.add_argument('--print_every', type=int, default=100,
+parser.add_argument('--print_every', type=int, default=1,
                     help='how many batches to wait before logging training status')
 parser.add_argument('--save_results', action='store_true',
                     help='save output results')
